@@ -43,6 +43,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>1.0</h1>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
