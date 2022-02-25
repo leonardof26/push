@@ -18,6 +18,7 @@ function App() {
     } catch (errorMsg) {
       console.log(errorMsg)
       alert(String(errorMsg))
+      console.log(uaClient)
     } 
   }
 
@@ -43,7 +44,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>2.0</h1>
+      <h1>3.0</h1>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
