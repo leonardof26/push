@@ -1,7 +1,46 @@
+import {useEffect, useState} from 'react'
+
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [uaClient, setUaClient] = useState();
+
+  async function teste() {
+    const ai = await window.UA;
+    setUaClient(ai);
+  }
+
+  async function subscribe() {
+    try {
+      await uaClient.register();
+      alert('Inscrito com sucesso')
+    } catch (errorMsg) {
+      console.log(errorMsg)
+      alert(String(errorMsg))
+    } 
+  }
+
+  // setTimeout(() => {
+  //   console.log('ihaaa')
+  //   console.log((window as any).UA);
+  //   teste()
+  // }, 3000)
+
+  useEffect(() => {
+    // console.log('ihe')
+
+    if (!window.UA) return;
+    // console.log('iha')
+    // console.log((window as any).UA);
+    teste();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [window?.UA]);
+
+  useEffect(() => {
+    console.log('uaClient', uaClient);
+  }, [uaClient]);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,6 +56,8 @@ function App() {
         >
           Learn React
         </a>
+      <button onClick={subscribe} type="button">Aceitar notificação</button> 
+
       </header>
     </div>
   );
